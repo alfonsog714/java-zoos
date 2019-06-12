@@ -3,11 +3,14 @@ package local.alfonso.zoo.controllers;
 import local.alfonso.zoo.model.Zoo;
 import local.alfonso.zoo.services.ZooService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.ArrayList;
 
 @RestController
@@ -35,4 +38,16 @@ public class ZooController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping(value = "/admin/zoos", consumes = {"application/json"}, produces = {"application/json"})
+    public ResponseEntity<?> addNewzoo(@Valid @RequestBody Zoo newZoo)
+    {
+        newZoo = zooService.save(newZoo);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        URI newZooURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{zooid}").buildAndExpand(newZoo.getZooid()).toUri();
+
+        responseHeaders.setLocation(newZooURI);
+
+        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+    }
 }
