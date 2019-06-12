@@ -46,7 +46,7 @@ public class Zoo
         this.zooname = zooname;
     }
 
-    public List<?> getTelephones() {
+    public List<Telephone> getTelephones() {
         return telephones;
     }
 
