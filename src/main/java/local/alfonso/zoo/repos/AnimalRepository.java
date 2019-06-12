@@ -1,6 +1,7 @@
 package local.alfonso.zoo.repos;
 
 import local.alfonso.zoo.model.Animal;
+import local.alfonso.zoo.views.CountAnimalsInZoo;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,8 +16,8 @@ public interface AnimalRepository extends CrudRepository<Animal, Long>
 //    ON a.zooid = z.zooid
 //    GROUP BY a.zooid, z.zooname
 
-    @Query(value = "SELECT a.zooid, z.zooname, count(a.animalid) as countanimals FROM zooanimals a NNER JOIN zoo z ON a.zooid = z.zooid GROUP BY a.zooid, z.zooname")
-    ArrayList<?> getCountAnimalsInZoo();
+    @Query(value = "SELECT a.zooid, z.zooname, count(a.animalid) as countanimals FROM zooanimals a INNER JOIN zoo z ON a.zooid = z.zooid GROUP BY a.zooid, z.zooname")
+    ArrayList<CountAnimalsInZoo> getCountAnimalsInZoo();
 
 //    DELETE
 //    FROM zooanimals
