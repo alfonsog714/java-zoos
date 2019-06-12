@@ -16,14 +16,14 @@ public interface AnimalRepository extends CrudRepository<Animal, Long>
 //    ON a.zooid = z.zooid
 //    GROUP BY a.zooid, z.zooname
 
-    @Query(value = "SELECT a.zooid, z.zooname, count(a.animalid) as countanimals FROM zooanimals a INNER JOIN zoo z ON a.zooid = z.zooid GROUP BY a.zooid, z.zooname")
-    ArrayList<CountAnimalsInZoo> getCountAnimalsInZoo();
+//    @Query(value = "SELECT a.zooid, z.zooname, count(a.animalid) as countanimals FROM zooanimals a INNER JOIN zoo z ON a.zooid = z.zooid GROUP BY a.zooid, z.zooname")
+//    ArrayList<CountAnimalsInZoo> getCountAnimalsInZoo();
 
 //    DELETE
 //    FROM zooanimals
 //    WHERE zooid =
 
-    @Modifying
-    @Query(value = "DELETE FROM zooanimals WHERE zooid = :zooid", nativeQuery = true)
-    void deleteZooFromZooanimals(long zooid);
+//    @Modifying
+//    @Query(value = "DELETE FROM zooanimals WHERE zooid = :zooid", nativeQuery = true)
+//    void deleteZooFromZooanimals(long zooid);
 }
