@@ -50,4 +50,11 @@ public class ZooController {
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
+
+    @PutMapping(value = "/admin/zoos/{id}")
+    public ResponseEntity<?> updateZooById(@RequestBody Zoo updateZoo, @PathVariable long id)
+    {
+        zooService.update(updateZoo, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
