@@ -16,5 +16,5 @@ public class ZooController {
     public ResponseEntity<?> getCountAnimalsInZoos()
     {
         return new ResponseEntity<>(zooService.getCountAnimalsInZoos(), HttpStatus.OK);
-    }
+    } // working 
 }
