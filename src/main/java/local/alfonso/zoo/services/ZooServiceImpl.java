@@ -28,9 +28,10 @@ public class ZooServiceImpl implements ZooService
     public void delete(long id) {
         if(zrepos.findById(id).isPresent())
         {
+            zrepos.deleteZooFromZooanimals(id);
             zrepos.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Zoo with the id " + Long.toString(id) + " does not exist.");
+            throw new EntityNotFoundException("Zoo with the id " + id + " does not exist.");
         }
 
     }

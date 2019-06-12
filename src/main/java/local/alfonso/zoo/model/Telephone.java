@@ -1,5 +1,7 @@
 package local.alfonso.zoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Telephone
 
     @ManyToOne
     @JoinColumn(name = "zooid")
+    @JsonIgnoreProperties("telephone")
     private Zoo zoo;
 
     public Telephone() {

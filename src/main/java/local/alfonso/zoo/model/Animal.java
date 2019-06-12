@@ -1,5 +1,7 @@
 package local.alfonso.zoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Animal
 
     @ManyToMany
     @JoinTable(name = "zooanimals", joinColumns = {@JoinColumn(name = "animalid")}, inverseJoinColumns = {@JoinColumn(name = "zooid")})
+    @JsonIgnoreProperties("animal")
     private List<Zoo> zoos = new ArrayList<>();
 
     public Animal() {

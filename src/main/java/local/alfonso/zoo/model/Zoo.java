@@ -1,5 +1,7 @@
 package local.alfonso.zoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,12 @@ public class Zoo
     private String zooname;
 
     @OneToMany(mappedBy = "zoo")
+    @JsonIgnoreProperties("zoo")
     private List<Telephone> telephones = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "zoos")
+    @JsonIgnoreProperties("zoos")
+    private List<Animal> animals = new ArrayList<>();
 
     public Zoo() {
     }
@@ -45,5 +52,13 @@ public class Zoo
 
     public void setTelephones(List<Telephone> telephones) {
         this.telephones = telephones;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }
