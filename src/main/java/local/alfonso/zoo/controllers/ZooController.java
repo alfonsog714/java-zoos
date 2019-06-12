@@ -35,7 +35,7 @@ public class ZooController {
     public ResponseEntity<?> deleteZooById(@PathVariable long zooid)
     {
         zooService.delete(zooid);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK); // not working
     }
 
     @PostMapping(value = "/admin/zoos", consumes = {"application/json"}, produces = {"application/json"})
