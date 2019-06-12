@@ -2,6 +2,7 @@ package local.alfonso.zoo.services;
 
 import local.alfonso.zoo.model.Zoo;
 import local.alfonso.zoo.repos.ZooRepository;
+import local.alfonso.zoo.views.CountAnimalsInZoo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,5 +33,11 @@ public class ZooServiceImpl implements ZooService
             throw new EntityNotFoundException("Zoo with the id " + Long.toString(id) + " does not exist.");
         }
 
+    }
+
+
+    @Override
+    public ArrayList<CountAnimalsInZoo> getCountAnimalsInZoos() {
+        return zrepos.getCountAnimalsInZoo();
     }
 }
